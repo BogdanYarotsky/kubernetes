@@ -23,7 +23,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./WeatherForecastApi/Dockerfile
+          context: ./WeatherForecastApi
           push: true
           tags: bogdanyarotsky/weatherforecast-api:latest
