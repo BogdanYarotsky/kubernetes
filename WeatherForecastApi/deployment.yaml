@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weatherforecast-api
+  namespace: app
 spec:
   replicas: 3 # Ensures 3 instances are running
   selector:
