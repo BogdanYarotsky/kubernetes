@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - "WeatherForecastApi/**"
+    paths:
+      - "WeatherForecastApi/**"
 
 jobs:
   publish:
@@ -26,23 +26,3 @@ jobs:
           context: ./WeatherForecastApi
           push: true
           tags: bogdanyarotsky/weatherforecast-api:latest
-
-  deploy:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Set up Kubernetes context
-        uses: azure/setup-kubectl@v1
-
-      - name: Deploy to AKS
-        run: |
-          kubectl apply -f ./WeatherForecastApi/deployment.yaml
-          kubectl apply -f ./WeatherForecastApi/service.yaml
