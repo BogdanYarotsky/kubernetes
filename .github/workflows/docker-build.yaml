@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "WeatherForecastApi/**"
+    # paths:
+    #   - "WeatherForecastApi/**"
 
 jobs:
   build-and-push:
